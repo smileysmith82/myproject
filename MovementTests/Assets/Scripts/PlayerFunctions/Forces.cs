@@ -13,11 +13,6 @@ public class Forces : MonoBehaviour
     {
 
     rb = GetComponent<Rigidbody2D>();
-        rb.AddForce(Vector2.right * 10);
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("Collision detected with " + collision.gameObject.name);
+    rb.AddForce(Vector2.right * 20);
     }
 }
