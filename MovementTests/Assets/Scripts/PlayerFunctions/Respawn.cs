@@ -3,10 +3,12 @@ public class Respawn : MonoBehaviour
 {
     
     public Transform startPoint;
+    private CharacterMover characterMover;
     private Rigidbody2D rb;
 
     private void Start()
     {
+        characterMover = GetComponent<CharacterMover>();
         rb=GetComponent<Rigidbody2D>();
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -17,6 +19,7 @@ public class Respawn : MonoBehaviour
             
             transform.position = startPoint.position;
             rb.velocity = new Vector2(15f, 2f);
+            characterMover.speed += 5f;
             
             
         }
