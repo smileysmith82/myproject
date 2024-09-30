@@ -44,14 +44,31 @@ public class CharacterMover : MonoBehaviour
             jumpCount = 0;
         }
     }
-    
+
     private bool IsGrounded()
+    { 
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.1f, groundLayer);
+        isGrounded = colliders.Length > 0; // True if there are any colliders on the ground layer
+        return isGrounded;
+        
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, .51f, groundLayer);
-        Debug.DrawRay(transform.position, Vector2.down * .51f, Color.blue);
-        return hit.collider != null;
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            isGrounded = true;
+            jumpCount = 0;
+        }
 
         
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            isGrounded = false;
+        }
     }
 
     public bool HasDoubleJump()

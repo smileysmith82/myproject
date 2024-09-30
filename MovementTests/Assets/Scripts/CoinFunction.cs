@@ -1,5 +1,5 @@
 using UnityEngine;
-public class TransformController : MonoBehaviour
+public class CoinFunction : MonoBehaviour
 
 {
     private void Update()
