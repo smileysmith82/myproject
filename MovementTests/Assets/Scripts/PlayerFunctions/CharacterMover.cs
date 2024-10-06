@@ -5,12 +5,13 @@ public class CharacterMover : MonoBehaviour
     public float speed = 5f;
     public float jumpValue = 7f;
     public LayerMask groundLayer;
+    public LayerMask wallLayer;
     public int maxJumps = 1;
     public bool hasDoubleJump = false;
     
     private Rigidbody2D rb;
     private int jumpCount = 0;
-    private bool isGrounded;
+    public bool isGrounded;
 
     void Start() 
     {
@@ -45,13 +46,28 @@ public class CharacterMover : MonoBehaviour
         }
     }
 
-    private bool IsGrounded()
-    { 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.1f, groundLayer);
-        isGrounded = colliders.Length > 0; // True if there are any colliders on the ground layer
-        return isGrounded;
-        
+    public bool CanJump()
+    {
+        return jumpCount < maxJumps;
     }
+    public int GetCurrentJumpCount()
+    {
+        return jumpCount;
+    }
+
+    private bool IsGrounded()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.1f, groundLayer);
+        return colliders.Length > 0; // True if there are any colliders on the ground layer
+    }
+
+    public bool IsTouchingWall()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.1f, wallLayer);
+        return colliders.Length > 0;
+    }
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))

@@ -1,29 +1,50 @@
 using UnityEngine;
 
-public class CharacterAnimatorController : MonoBehaviour
+public class CharacterAnimatorControllerTrig : MonoBehaviour
 {
     private Animator animator;
+    private CharacterMover characterMover;
+    private Rigidbody2D rb;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
+        characterMover = GetComponent<CharacterMover>();
+        rb = GetComponent<Rigidbody2D>();
     }
+
     private void Update()
     {
         HandleAnimations();
     }
+
     private void HandleAnimations()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         animator.SetBool("isRunning", horizontalInput != 0);
+
+        if (rb.velocity.y < -0.1f && characterMover.isGrounded != true)
+        {
+            animator.SetBool("isFalling", true);
+        }
+        else
+        {
+            animator.SetBool("isFalling", false);
+        }
 
         if (Input.GetButtonDown("Jump"))
         {
             animator.SetTrigger("Jump");
         }
 
+        if (characterMover.HasDoubleJump() && characterMover.GetCurrentJumpCount() == 2 && Input.GetButtonDown("Jump"))
+        {
+            animator.SetTrigger("DoubleJump");
+        }
+
         if (Input.GetKeyDown(KeyCode.W))
         {
-            animator.SetBool("isWallJumping", true);
+            animator.SetTrigger("WallJump");
         }
     }
 
