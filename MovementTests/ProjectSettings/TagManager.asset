@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Floor
   - Platforms
+  - Pickup
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - Water
   - UI
   - Wall
-  - 
+  - Player
   - 
   - 
   - 
@@ -43,4 +44,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 584230095
+    locked: 0
+  - name: Trap
+    uniqueID: 2565740031
+    locked: 0
+  - name: Ground
+    uniqueID: 3449309753
+    locked: 0
+  - name: Pickup
+    uniqueID: 3552076687
+    locked: 0
+  - name: Player
+    uniqueID: 546312879
     locked: 0

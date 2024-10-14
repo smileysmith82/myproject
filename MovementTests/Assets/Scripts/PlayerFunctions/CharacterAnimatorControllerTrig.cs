@@ -21,7 +21,14 @@ public class CharacterAnimatorControllerTrig : MonoBehaviour
     private void HandleAnimations()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
-        animator.SetBool("isRunning", horizontalInput != 0);
+        if (characterMover.isGrounded == true)
+        {
+            animator.SetBool("isRunning", horizontalInput != 0);
+        }
+        else
+        {
+            animator.SetBool("isRunning", false);
+        }
 
         if (rb.velocity.y < -0.1f && characterMover.isGrounded != true)
         {
@@ -50,7 +57,7 @@ public class CharacterAnimatorControllerTrig : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collided with: " + collision.gameObject.name);
+        //Debug.Log("Collided with: " + collision.gameObject.name);
         if (collision.gameObject.CompareTag("Enemy"))
         {
             HitEnemy();
