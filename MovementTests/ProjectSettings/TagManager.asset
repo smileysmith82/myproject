@@ -8,6 +8,8 @@ TagManager:
   - Floor
   - Platforms
   - Pickup
+  - Trap
+  - Coin
   layers:
   - Default
   - TransparentFX
