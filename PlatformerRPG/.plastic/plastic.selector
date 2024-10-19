@@ -1,0 +1,4 @@
+repository "PlatformerRPG@justsmileandrun@cloud"
+  path "/"
+    br "/main"
+    co "/main"
