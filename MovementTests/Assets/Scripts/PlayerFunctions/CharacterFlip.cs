@@ -23,4 +23,32 @@ public class CharacterFlip : MonoBehaviour
         }
         
     }
+/*
+ private Rigidbody2D rb;
+     private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+        flipCharacter();
+    }
+    public void flipCharacter()
+    {
+        if (Mathf.Abs(rb.velocity.x) > 0.1f)
+        {if (rb.velocity.x >= 0)
+            {
+                facingDirection = 1;
+                transform.rotation = Quaternion.Euler(0, right, 0);
+            }
+            else if (rb.velocity.x <= 0)
+            {
+                facingDirection = -1;
+                transform.rotation = Quaternion.Euler(0, left, 0);
+            }
+        }
+    }
+ */
+
 }
