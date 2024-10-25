@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Vector2 wallJumpDirection = new Vector2(8f,16f);
     [SerializeField] private float wallJumpCooldown = 0.5f;
     [SerializeField] private float movementLockDuration = 5.0f;
+    //public float fallMultiplier = 1.5f;
     
     private bool canDoubleJump;
     private bool canWallSlide;
@@ -111,7 +112,11 @@ public class Player : MonoBehaviour
     }
     private void Jump()
     { 
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);    
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        /*if (rb.velocity.y < 0 && canWallSlide == false)
+        {
+            rb.velocity  += Vector2.up * Physics2D.gravity.y* (fallMultiplier) * Time.deltaTime;
+        }*/
     }
     private void WallJump()
     {

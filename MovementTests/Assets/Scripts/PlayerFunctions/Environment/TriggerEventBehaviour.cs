@@ -23,10 +23,9 @@ public class TriggerEventBehaviour : MonoBehaviour
     {
         if (other.CompareTag("Coin"))
         {
+            FindObjectOfType<SimpleImageBehaviour>().CollectCoin(1);
             coinCount++;
-            Debug.Log("Coin Collected");
             Destroy(other.gameObject);
-            UpdateCoinUI();
         }
         else if (other.CompareTag("Trap"))
         {

@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverUI;
     public LifeCounter lifeCounter;
     public SimpleFloatData healthData;
+    public SimpleFloatData coins;
     public GameOverScreen gameOverScreen;
 
     /*
@@ -27,6 +28,8 @@ public class GameManager : MonoBehaviour
         {
             healthData.SetValue(1.0f);
         }
+        if (coins!= null)
+            coins.SetValue(0.0f);
 
         if (lifeCounter != null)
         {

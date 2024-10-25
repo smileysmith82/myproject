@@ -3,23 +3,26 @@ using UnityEngine.UI;
 
 public class LifeCounter : MonoBehaviour
 {
-    public int lives = 3;
-    public Text LifeCounterText;
-    public SimpleFloatData healthData;
+    [Header("Retrieving Variables")]
     private GameManager gameManager;
-    public float deathThreshold = -11.0f;
     public Respawn respawn;
     private Player player;
     private AnimatorTest animatorTest;
-    public SimpleFloatData dataObj;
-    private bool hasFallenBelowPlane = false;
+    public SimpleFloatData healthData;
+    public Text LifeCounterText;
     
+    [Header("In Game Variables")]
+    public float deathThreshold = -11.0f;
+    public int startingLives = 3;
+    public int lives;
+    public int maxLives = 100;
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         respawn = GetComponent<Respawn>();
         player = GetComponent<Player>();
         animatorTest = GetComponent<AnimatorTest>();
+        lives = startingLives;
         UpdateLifeCounter();
         if (healthData != null)
         {
@@ -32,36 +35,49 @@ public class LifeCounter : MonoBehaviour
         if (transform.position.y <= deathThreshold)
         {
             LoseLife();
-            hasFallenBelowPlane = true;
-        }
-        if (transform.position.y > deathThreshold)
-        {
-            hasFallenBelowPlane = false;
         }
     }
     public void LoseLife()
     {
         animatorTest.TriggerHitAnimation();
-        if (dataObj != null)
+        if (lives <= 0) return;
+        
+        if (lives > 1)
         {
-            dataObj.UpdateValue(-0.34f);
-        }
-        if (lives >=1)
-        {
+            float healthLostPercentage = 1f/lives;
+            healthData?.UpdateValue(-healthLostPercentage);
             lives--;
             respawn.RespawnPlayer();
-            healthData.UpdateValue(-0.34f);
         }
-        else if (lives ==0 || lives < 0)
+        else if (lives == 1)
         {
+            
+            float healthLostPercentage = 1f/lives;
+            healthData?.UpdateValue(-healthLostPercentage);
+            lives--;
+            UpdateLifeCounter();
             Debug.Log("Game Over");
-            gameManager.PlayerDeath();
+            gameManager?.PlayerDeath();
             player.canMove = false;
         }
         
         UpdateLifeCounter();
     }
 
+
+    public void GainLife()
+    {
+        if (lives < maxLives)
+        {
+            lives++;
+            UpdateLifeCounter();
+            Debug.Log("Gained a life! Total Lives: " + lives);
+        }
+        else
+        {
+            Debug.Log("Maximum Lives reached!");
+        }
+    }
     public void UpdateLifeCounter()
     {
         if (LifeCounterText != null)
