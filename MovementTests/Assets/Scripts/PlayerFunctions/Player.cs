@@ -21,7 +21,6 @@ public class Player : MonoBehaviour
     private float movingInput;
     public bool canMove = true;
     private float lastWallJumpTime;
-    
     private bool temporarilyDisableWallDetection;
     
     [Header("Collision info")]
@@ -29,6 +28,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float groundCheckRadius;
     [SerializeField] private LayerMask whatIsGround;
                      public bool isGrounded;
+    [SerializeField] private LayerMask oneWayPlatformLayer;
     [SerializeField] private Transform wallCheck;
     [SerializeField] private float wallCheckDistance;
                      private bool isWallDetected;
@@ -41,7 +41,6 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         characterFlip = GetComponent<CharacterFlip>();
     }
-    // Update is called once per frame
     void Update()
     {
         HandleInput();
@@ -70,7 +69,7 @@ public class Player : MonoBehaviour
         {
             WallJump();
         }
-        else if (isGrounded)
+        else if (isGrounded || (isCollidingWithOneWayPlatform() && rb.velocity.y <= 0))
         {
             Jump();
         }
@@ -80,6 +79,11 @@ public class Player : MonoBehaviour
             Jump();
             animatorTest.TriggerDoubleJump();
         }
+    }
+
+    private bool isCollidingWithOneWayPlatform()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, oneWayPlatformLayer);
     }
     private void HandleMovement()
     {
@@ -113,10 +117,6 @@ public class Player : MonoBehaviour
     private void Jump()
     { 
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        /*if (rb.velocity.y < 0 && canWallSlide == false)
-        {
-            rb.velocity  += Vector2.up * Physics2D.gravity.y* (fallMultiplier) * Time.deltaTime;
-        }*/
     }
     private void WallJump()
     {
@@ -155,6 +155,10 @@ public class Player : MonoBehaviour
     private void CheckGroundCollision()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+        if (!isGrounded && rb.velocity.y <= 0)
+        {
+            isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, oneWayPlatformLayer);
+        }
     }
     private void CheckWallCollision()
     {

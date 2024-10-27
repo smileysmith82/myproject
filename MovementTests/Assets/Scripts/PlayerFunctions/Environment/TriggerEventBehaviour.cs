@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class TriggerEventBehaviour : MonoBehaviour
 {
     public UnityEvent triggerEvent;
-    public int coinCount = 0;
     public Text coinCountText;
     private Player player;
     private LifeCounter lifeCounter;
@@ -23,9 +22,13 @@ public class TriggerEventBehaviour : MonoBehaviour
     {
         if (other.CompareTag("Coin"))
         {
-            FindObjectOfType<SimpleImageBehaviour>().CollectCoin(1);
-            coinCount++;
-            Destroy(other.gameObject);
+            Coin coin = other.GetComponent<Coin>();
+            if (coin != null)
+            {
+                int coinValue = coin.GetValue();
+                FindObjectOfType<SimpleImageBehaviour>().CollectCoin(coinValue);
+                Destroy(other.gameObject);
+            }
         }
         else if (other.CompareTag("Trap"))
         {
@@ -42,7 +45,7 @@ public class TriggerEventBehaviour : MonoBehaviour
     {
         if (coinCountText != null)
         {
-            coinCountText.text = "Coins: " + coinCount;
+            coinCountText.text = "Coins: " + Mathf.FloorToInt(FindObjectOfType<SimpleImageBehaviour>().coinDataObj.value*100);
         }
     }
 }

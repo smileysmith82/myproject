@@ -17,9 +17,9 @@ TagManager:
   - Ground
   - Water
   - UI
-  - Wall
+  - OneWayPlatforms
   - Player
-  - 
+  - Wall
   - 
   - 
   - 
