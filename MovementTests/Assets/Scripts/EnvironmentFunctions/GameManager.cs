@@ -8,20 +8,23 @@ public class GameManager : MonoBehaviour
     public SimpleFloatData healthData;
     public SimpleFloatData coins;
     public GameOverScreen gameOverScreen;
+    private float maxLevel = 1.1f;
 
-    /*
+    
      public void GameOver()
-    {
-        GameOverScreen.Setup()
-    }
-    */
+     {
+         if (gameOverScreen != null)
+         {
+             gameOverUI.SetActive(true);
+             gameOverScreen.Setup((float)maxLevel);    
+         }
+     }
+    
     
     public void PlayerDeath()
     {
-        if (gameOverUI != null)
-        {
-            gameOverUI.SetActive(true);
-        }
+
+        GameOver();
         Debug.Log("Player Death");
 
         if (healthData != null)

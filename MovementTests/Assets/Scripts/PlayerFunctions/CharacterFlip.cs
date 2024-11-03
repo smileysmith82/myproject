@@ -1,54 +1,38 @@
+using System;
 using UnityEngine;
 
 public class CharacterFlip : MonoBehaviour
 {
-    public KeyCode key1 = KeyCode.RightArrow, key2 = KeyCode.LeftArrow;
-    public float direction1 = 0, direction2 = 180;
+    private Rigidbody2D rb;
     public int facingDirection = 1;
-    
+    public float threshold = 0.1f;
 
-    // Update is called once per frame
-    private void Update()
-    {
-        if (Input.GetKeyDown(key1))
-        {
-            facingDirection = 1;
-            transform.rotation = Quaternion.Euler(0, direction1, 0);
-        }
-
-        if (Input.GetKeyDown(key2))
-        {
-            facingDirection = -1;
-            transform.rotation = Quaternion.Euler(0, direction2, 0);
-        }
-        
-    }
-/*
- private Rigidbody2D rb;
-     private void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
+    // Update is called once per frame
     private void Update()
     {
-        flipCharacter();
+        FlipCharacter();
     }
-    public void flipCharacter()
+
+    private void FlipCharacter()
     {
-        if (Mathf.Abs(rb.velocity.x) > 0.1f)
-        {if (rb.velocity.x >= 0)
+        if (Mathf.Abs(rb.velocity.x) > threshold)
+        {
+            if (rb.velocity.x > 0)
             {
                 facingDirection = 1;
-                transform.rotation = Quaternion.Euler(0, right, 0);
+                transform.rotation = Quaternion.Euler(0, 0, 0);
             }
-            else if (rb.velocity.x <= 0)
+            else if (rb.velocity.x < 0)
             {
                 facingDirection = -1;
-                transform.rotation = Quaternion.Euler(0, left, 0);
+                transform.rotation = Quaternion.Euler(0, 180, 0);
             }
         }
     }
- */
 
 }

@@ -120,7 +120,6 @@ public class Player : MonoBehaviour
     }
     private void WallJump()
     {
-        Debug.Log("Wall Jump Triggered");
         lastWallJumpTime = Time.time;
         canMove = false; 
         movementLockEndTime = Time.time + movementLockDuration;

@@ -36,13 +36,11 @@ public class SimpleImageBehaviour : MonoBehaviour
         if (healthDataObj != null)
         {
             float clampedHealthValue = Mathf.Clamp01(healthDataObj.value);
-            Debug.Log("Health Value: " + healthDataObj.value + ", Clamped Value: " + clampedHealthValue);
             imageObj.fillAmount = clampedHealthValue;
         }
 
         if (coinDataObj != null)
         {
-            Debug.Log("Coins Value: " + coinDataObj.value);
             float fillAmount = Mathf.Clamp01(coinDataObj.value / maxCoinsforLife);
             imageObj.fillAmount = fillAmount;
             

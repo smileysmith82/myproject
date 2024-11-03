@@ -1,21 +1,20 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameOverScreen : MonoBehaviour
 {
-    public Text pointsText;
+    public Text maxLevelText;
     
-    public void Setup(int score)
+    public void Setup(float maxLevel)
     {
         gameObject.SetActive(true);
-        pointsText.text = score.ToString() + "Points";
+        maxLevelText.text = "You reached level\n" + maxLevel.ToString();
     }
 
     public void RestartButton()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Level1.1");
     }
 
     public void ExitButton()

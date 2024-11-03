@@ -45,7 +45,7 @@ public class LifeCounter : MonoBehaviour
         if (lives > 1)
         {
             float healthLostPercentage = 1f/lives;
-            healthData?.UpdateValue(-healthLostPercentage);
+            healthData.UpdateValue(-healthLostPercentage);
             lives--;
             respawn.RespawnPlayer();
         }
@@ -57,14 +57,13 @@ public class LifeCounter : MonoBehaviour
             lives--;
             UpdateLifeCounter();
             Debug.Log("Game Over");
-            gameManager?.PlayerDeath();
+            gameManager.PlayerDeath();
             player.canMove = false;
         }
         
         UpdateLifeCounter();
     }
-
-
+    
     public void GainLife()
     {
         if (lives < maxLives)

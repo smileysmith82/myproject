@@ -1,8 +1,12 @@
 using UnityEngine;
+
+
+
 public class Respawn : MonoBehaviour
 {
     
     public Transform startPoint;
+    private Transform currentRespawnPoint;
     private Player player;
     private Rigidbody2D rb;
 
@@ -10,11 +14,17 @@ public class Respawn : MonoBehaviour
     {
         player = GetComponent<Player>();
         rb=GetComponent<Rigidbody2D>();
+        currentRespawnPoint = startPoint;
     }
 
     public void RespawnPlayer()
     {
-        transform.position = startPoint.position;
-        rb.velocity = new Vector2(0,0);
+        transform.position = currentRespawnPoint.position;
+        rb.velocity = Vector2.zero;
+    }
+
+    public void SetCheckpoint(Vector3 newCheckpoint)
+    {
+        currentRespawnPoint.position = newCheckpoint;
     }
 }

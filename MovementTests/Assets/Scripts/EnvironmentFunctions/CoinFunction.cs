@@ -14,6 +14,6 @@ public class CoinFunction : MonoBehaviour
             //var p = new Vector3 (0, x, 0);
             //transform.position = startposition + p;
             
-            transform.Rotate(eulers: new Vector3(0,30, 0) * Time.deltaTime);
+            transform.Rotate(eulers: new Vector3(0,45, 0) * Time.deltaTime);
           }
 }
