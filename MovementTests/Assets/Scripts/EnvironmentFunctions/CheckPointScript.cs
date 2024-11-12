@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CheckPointScript : MonoBehaviour
@@ -8,22 +6,30 @@ public class CheckPointScript : MonoBehaviour
     public Transform checkpointPosition;
     private Respawn respawnScript;
     private Animator animator;
+    public AudioClip checkpointSound;
+    private AudioSource audioSource;
+    private bool checkpointActivated = false;
     
     void Start()
     {
         respawnScript = FindObjectOfType<Respawn>();  
         animator = GetComponent<Animator>();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
         {
-            StartCoroutine(TriggerCheckpointSequence());
-            respawnScript.SetCheckpoint(checkpointPosition.position);
+            audioSource = gameObject.AddComponent<AudioSource>();
         }
     }
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") && !checkpointActivated)
+        {
+            checkpointActivated = true;
+            StartCoroutine(TriggerCheckpointSequence());
+            respawnScript.SetCheckpoint(checkpointPosition.position);
+            PlayCheckPointSound();
+        }
+    }
     private IEnumerator TriggerCheckpointSequence()
     {
         TriggerUnfurlAnimation();
@@ -31,6 +37,19 @@ public class CheckPointScript : MonoBehaviour
         TriggerOpenedAnimation();
     }
 
+    private void PlayCheckPointSound()
+    {
+        if (checkpointSound != null)
+        {
+            audioSource.PlayOneShot(checkpointSound);
+        }
+        else
+        {
+            {
+                Debug.LogWarning("Checkpoint sound not assigned");
+            }
+        }
+    }
     private void TriggerUnfurlAnimation()
     {
         if (animator != null)
@@ -52,11 +71,5 @@ public class CheckPointScript : MonoBehaviour
         {
             Debug.LogWarning("Animator not found (Opened)");
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

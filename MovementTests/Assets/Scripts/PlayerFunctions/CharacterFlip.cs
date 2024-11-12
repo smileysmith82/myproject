@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class CharacterFlip : MonoBehaviour
@@ -11,13 +10,10 @@ public class CharacterFlip : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
-    // Update is called once per frame
     private void Update()
     {
         FlipCharacter();
     }
-
     private void FlipCharacter()
     {
         if (Mathf.Abs(rb.velocity.x) > threshold)

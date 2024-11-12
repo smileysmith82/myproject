@@ -1,8 +1,8 @@
 using UnityEngine;
-public class CoinFunction : MonoBehaviour
+public class CoinSpin : MonoBehaviour
 
 {
-    Vector3 startposition;
+    private Vector2 startposition;
 
     void Start()
     {

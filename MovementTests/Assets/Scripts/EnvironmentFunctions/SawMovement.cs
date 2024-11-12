@@ -1,14 +1,11 @@
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class SawMovement : MonoBehaviour
 {
     public Transform[] waypoints;
-
     public float speed = 5f;
     private int currentWaypointIndex = 0;
     
-    // Update is called once per frame
     void Update()
     {
         if (waypoints.Length == 0)

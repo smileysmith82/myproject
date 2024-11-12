@@ -11,16 +11,13 @@ public class AnimatorTest : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
-
     void Update()
     {
         UpdateAnimations();
     }
 
-    // Update is called once per frame
     public void UpdateAnimations()
     {
-        
         animator.SetFloat("yVelocity", rb.velocity.y);
         animator.SetBool("isGrounded", player.isGrounded);
         animator.SetBool("isMoving", rb.velocity.x != 0);

@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-
 public class TriggerEventBehaviour : MonoBehaviour
 {
     public UnityEvent triggerEvent;
@@ -10,12 +9,16 @@ public class TriggerEventBehaviour : MonoBehaviour
     private Player player;
     private LifeCounter lifeCounter;
     private AnimatorTest animatortest;
+    private SoundTrigger soundTrigger;
+    private SimpleImageBehaviour simpleImageBehaviour;
     
     void Start()
     {
         player = FindObjectOfType<Player>();
         animatortest = FindObjectOfType<AnimatorTest>();
         lifeCounter = FindObjectOfType<LifeCounter>();
+        soundTrigger = FindObjectOfType<SoundTrigger>();
+        simpleImageBehaviour = FindObjectOfType<SimpleImageBehaviour>();
         UpdateCoinUI();
     }
     private void OnTriggerEnter2D (Collider2D other)
@@ -27,6 +30,7 @@ public class TriggerEventBehaviour : MonoBehaviour
             {
                 int coinValue = coin.GetValue();
                 FindObjectOfType<SimpleImageBehaviour>().CollectCoin(coinValue);
+                soundTrigger.PlayCoinSound(coinValue, simpleImageBehaviour.coinDataObj.value);
                 Destroy(other.gameObject);
             }
         }

@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
     [SerializeField] private float wallJumpCooldown = 0.5f;
     [SerializeField] private float movementLockDuration = 5.0f;
     //public float fallMultiplier = 1.5f;
-    
     private bool canDoubleJump;
     private bool canWallSlide;
     private bool canWallJump = true;
@@ -32,7 +31,6 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform wallCheck;
     [SerializeField] private float wallCheckDistance;
                      private bool isWallDetected;
-    
     private float movementLockEndTime;
     
     void Start()
@@ -80,7 +78,6 @@ public class Player : MonoBehaviour
             animatorTest.TriggerDoubleJump();
         }
     }
-
     private bool isCollidingWithOneWayPlatform()
     {
         return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, oneWayPlatformLayer);
@@ -130,7 +127,6 @@ public class Player : MonoBehaviour
         temporarilyDisableWallDetection = true;
         isWallSliding = false;
         Invoke(nameof(EnableWallDetection), wallJumpCooldown);
-        
     }
     private void EnableWallDetection()
     {
@@ -167,8 +163,6 @@ public class Player : MonoBehaviour
                              Physics2D.Raycast(wallCheck.position, Vector2.right, wallCheckDistance, whatIsGround);
         }
     }
-
-    
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);

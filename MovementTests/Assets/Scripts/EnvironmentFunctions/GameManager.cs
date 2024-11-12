@@ -9,8 +9,6 @@ public class GameManager : MonoBehaviour
     public SimpleFloatData coins;
     public GameOverScreen gameOverScreen;
     private float maxLevel = 1.1f;
-
-    
      public void GameOver()
      {
          if (gameOverScreen != null)
@@ -19,8 +17,6 @@ public class GameManager : MonoBehaviour
              gameOverScreen.Setup((float)maxLevel);    
          }
      }
-    
-    
     public void PlayerDeath()
     {
 
@@ -44,27 +40,18 @@ public class GameManager : MonoBehaviour
         if (player != null) Destroy(player);
         
     }
-
-
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
     public void OnLevelComplete()
     {
         Debug.Log("Level Complete");
     }
-    // Start is called before the first frame update
     void Start()
     {
         if (healthData != null)
             healthData.SetValue(1.0f);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

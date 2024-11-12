@@ -12,6 +12,7 @@ public class SimpleImageBehaviour : MonoBehaviour
     private const int maxCoinsforLife = 100;
     
     public Text coinCountText;
+    private SoundTrigger soundTrigger;
     
     private void Start()
     {
@@ -24,13 +25,13 @@ public class SimpleImageBehaviour : MonoBehaviour
         coinDataObj.value = 0.0f;
         UpdateWithFloatData();
         UpdateCoinUI();
+        
+        soundTrigger = FindObjectOfType<SoundTrigger>();
     }
-
     public void Update()
     {
         UpdateWithFloatData();
     }
-    
     public void UpdateWithFloatData()
     {
         if (healthDataObj != null)
@@ -60,6 +61,7 @@ public class SimpleImageBehaviour : MonoBehaviour
         {
             coinDataObj.UpdateValue(coinValue);
             UpdateCoinUI();
+            soundTrigger.PlayCoinSound(coinValue, coinDataObj.value);
         }
     }
 
