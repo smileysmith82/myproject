@@ -28,3 +28,4 @@ public class Respawn : MonoBehaviour
         currentRespawnPoint.position = newCheckpoint;
     }
 }
+ 

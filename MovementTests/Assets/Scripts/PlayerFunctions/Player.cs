@@ -1,3 +1,4 @@
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -5,6 +6,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private CharacterFlip characterFlip;
     private AnimatorTest animatorTest;
+    private AudioSource audioSource;
     
     [Header("Movement info")]
     [SerializeField] private float speed = 5;
@@ -33,11 +35,17 @@ public class Player : MonoBehaviour
                      private bool isWallDetected;
     private float movementLockEndTime;
     
+    [Header("Audio")]
+    public AudioClip jumpSound;
+    [Range(0f, 1f)]
+    public float jumpVolume = 0.5f;
+    
     void Start()
     {
         animatorTest = GetComponent<AnimatorTest>();
         rb = GetComponent<Rigidbody2D>();
         characterFlip = GetComponent<CharacterFlip>();
+        audioSource = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -92,7 +100,7 @@ public class Player : MonoBehaviour
 
         if (canMove)
         {
-            if (isWallDetected && !temporarilyDisableWallDetection && movingInput!= 0)
+            if (isWallDetected && !temporarilyDisableWallDetection && movingInput!= 0 && !isGrounded)
             {
                 StartWallSlide();
             }
@@ -114,6 +122,11 @@ public class Player : MonoBehaviour
     private void Jump()
     { 
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        //play Jump sound
+        if (jumpSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(jumpSound, jumpVolume);
+        }
     }
     private void WallJump()
     {

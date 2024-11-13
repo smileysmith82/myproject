@@ -15,7 +15,12 @@ public class LifeCounter : MonoBehaviour
     public float deathThreshold = -11.0f;
     public int startingLives = 3;
     public int lives;
-    public int maxLives = 100;
+    public int maxLives = 99;
+    [Header("Audio")] 
+    public AudioSource audioSource;
+    public AudioClip LevelUpSound;
+    public AudioClip teleportSound;
+    public AudioClip ouchSound;
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -34,28 +39,33 @@ public class LifeCounter : MonoBehaviour
     {
         if (transform.position.y <= deathThreshold)
         {
-            LoseLife();
+            if (lives == 1)
+            {
+                Debug.Log("Game Over");
+                gameManager.PlayerDeath();
+                player.canMove = false;
+            }
+            else
+            {
+                audioSource.PlayOneShot(teleportSound);
+                LoseLife();    
+            }
+            
         }
     }
     public void LoseLife()
     {
         animatorTest.TriggerHitAnimation();
         if (lives <= 0) return;
-        
-        if (lives > 1)
+        if (lives < 4)
         {
-            float healthLostPercentage = 1f/lives;
-            healthData.UpdateValue(-healthLostPercentage);
-            lives--;
-            respawn.RespawnPlayer();
+            healthData.UpdateValue(-0.34f);     
         }
-        else if (lives == 1)
+        lives--;
+        respawn.RespawnPlayer();
+        
+        if (lives == 0)
         {
-            
-            float healthLostPercentage = 1f/lives;
-            healthData?.UpdateValue(-healthLostPercentage);
-            lives--;
-            UpdateLifeCounter();
             Debug.Log("Game Over");
             gameManager.PlayerDeath();
             player.canMove = false;
@@ -69,12 +79,30 @@ public class LifeCounter : MonoBehaviour
         if (lives < maxLives)
         {
             lives++;
+            if (lives < 4)
+            {
+                healthData.UpdateValue(0.34f);
+
+                if (healthData.value > 1.0f)
+                {
+                    healthData.SetValue(1.0f);
+                }
+            }
             UpdateLifeCounter();
+            PlayLevelUpSound();
             Debug.Log("Gained a life! Total Lives: " + lives);
         }
         else
         {
             Debug.Log("Maximum Lives reached!");
+        }
+    }
+
+    private void PlayLevelUpSound()
+    {
+        if (audioSource != null && LevelUpSound != null)
+        {
+            audioSource.PlayOneShot(LevelUpSound);
         }
     }
     public void UpdateLifeCounter()
@@ -89,6 +117,9 @@ public class LifeCounter : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy")  || collision.gameObject.CompareTag("Trap"))
         {
+            audioSource.pitch = 1;
+            audioSource.PlayOneShot(ouchSound);
+            
             LoseLife();
         }
     }

@@ -34,7 +34,7 @@ public class SimpleImageBehaviour : MonoBehaviour
     }
     public void UpdateWithFloatData()
     {
-        if (healthDataObj != null)
+        if (healthDataObj != null && lifecounter.lives < 4)
         {
             float clampedHealthValue = Mathf.Clamp01(healthDataObj.value);
             imageObj.fillAmount = clampedHealthValue;
