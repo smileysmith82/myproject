@@ -73,7 +73,6 @@ public class LifeCounter : MonoBehaviour
         
         UpdateLifeCounter();
     }
-    
     public void GainLife()
     {
         if (lives < maxLives)
@@ -97,7 +96,6 @@ public class LifeCounter : MonoBehaviour
             Debug.Log("Maximum Lives reached!");
         }
     }
-
     private void PlayLevelUpSound()
     {
         if (audioSource != null && LevelUpSound != null)

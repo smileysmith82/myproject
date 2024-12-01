@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="07460e3f-f8cb-474c-9cfb-74108220ea25" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../.plastic/plastic.changes" beforeDir="false" afterPath="$PROJECT_DIR$/../../.plastic/plastic.changes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.plastic/plastic.wktree" beforeDir="false" afterPath="$PROJECT_DIR$/../../.plastic/plastic.wktree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphics/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Graphics/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Prefabs/SpikeTrap (1).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../Prefabs/SpikeTrap (1).prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Scenes/World 1/Level1.1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../Scenes/World 1/Level1.1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackgroundMusic.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackgroundMusic.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EnemyFunctions/BatScript.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EnemyFunctions/BatScript.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EnemyFunctions/EnemyPacing.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EnemyFunctions/EnemyPacing.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EnemyFunctions/RollingScript.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EnemyFunctions/RollingScript.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EnvironmentFunctions/CameraFollow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EnvironmentFunctions/CameraFollow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EnvironmentFunctions/CheckPointScript.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EnvironmentFunctions/CheckPointScript.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EnvironmentFunctions/Coin.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EnvironmentFunctions/Coin.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EnvironmentFunctions/CoinSpin.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EnvironmentFunctions/CoinSpin.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EnvironmentFunctions/GameManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EnvironmentFunctions/GameManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EnvironmentFunctions/GameOverScreen.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EnvironmentFunctions/GameOverScreen.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EnvironmentFunctions/MainMenu.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EnvironmentFunctions/MainMenu.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EnvironmentFunctions/OneWayPlatformScript.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EnvironmentFunctions/OneWayPlatformScript.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EnvironmentFunctions/SawMovement.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EnvironmentFunctions/SawMovement.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EnvironmentFunctions/SimpleTriggerBehaviour.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EnvironmentFunctions/SimpleTriggerBehaviour.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlayerFunctions/Environment/LifeCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlayerFunctions/Environment/LifeCounter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlayerFunctions/Environment/Respawn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlayerFunctions/Environment/Respawn.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlayerFunctions/Environment/SimpleImageBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlayerFunctions/Environment/SimpleImageBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlayerFunctions/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlayerFunctions/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SoundTrigger.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SoundTrigger.cs.meta" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="2osDLUmOe7rflgoUTdVk4eGdTzw" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="07460e3f-f8cb-474c-9cfb-74108220ea25" name="Changes" comment="" />
+      <created>1731649334786</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1731649334786</updated>
+      <workItem from="1731649334975" duration="39000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="VcsManagerConfiguration">
+    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>

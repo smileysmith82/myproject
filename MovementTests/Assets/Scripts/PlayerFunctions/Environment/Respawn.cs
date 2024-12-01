@@ -16,13 +16,11 @@ public class Respawn : MonoBehaviour
         rb=GetComponent<Rigidbody2D>();
         currentRespawnPoint = startPoint;
     }
-
     public void RespawnPlayer()
     {
         transform.position = currentRespawnPoint.position;
         rb.velocity = Vector2.zero;
     }
-
     public void SetCheckpoint(Vector3 newCheckpoint)
     {
         currentRespawnPoint.position = newCheckpoint;

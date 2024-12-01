@@ -54,7 +54,6 @@ public class SimpleImageBehaviour : MonoBehaviour
             UpdateCoinUI();
         }
     }
-
     public void CollectCoin(int coinValue)
     {
         if (coinDataObj != null)
@@ -64,7 +63,6 @@ public class SimpleImageBehaviour : MonoBehaviour
             soundTrigger.PlayCoinSound(coinValue, coinDataObj.value);
         }
     }
-
     private void UpdateCoinUI()
     {
         if (coinCountText != null)

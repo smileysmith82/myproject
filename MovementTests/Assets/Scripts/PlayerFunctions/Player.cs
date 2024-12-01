@@ -153,7 +153,7 @@ public class Player : MonoBehaviour
     private void StopWallSlide()
     {
         isWallSliding = false;
-        canMove = true;
+        
     }
     private void CheckCollisions()
     {
