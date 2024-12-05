@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(ParticleSystem), typeof(Collider2D))]
 public class CheckPointScript : MonoBehaviour
 {
     public Transform checkpointPosition;
@@ -9,12 +10,17 @@ public class CheckPointScript : MonoBehaviour
     public AudioClip checkpointSound;
     private AudioSource audioSource;
     private bool checkpointActivated = false;
+    private ParticleSystem particleSystem;
+    public int particleAmount = 25;
     
     void Start()
     {
+        
         respawnScript = FindObjectOfType<Respawn>();  
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        particleSystem = GetComponent<ParticleSystem>();
+        
         if (audioSource == null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
@@ -28,7 +34,13 @@ public class CheckPointScript : MonoBehaviour
             StartCoroutine(TriggerCheckpointSequence());
             respawnScript.SetCheckpoint(checkpointPosition.position);
             PlayCheckPointSound();
+            TriggerParticles();
         }
+    }
+
+    private void TriggerParticles()
+    {
+        particleSystem.Emit(particleAmount);
     }
     private IEnumerator TriggerCheckpointSequence()
     {
