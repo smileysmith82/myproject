@@ -1,4 +1,4 @@
-using System.Security.Cryptography.X509Certificates;
+
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float groundCheckRadius;
     [SerializeField] private LayerMask whatIsGround;
                      public bool isGrounded;
+    public Transform trapDetection;
+    public float trapDetectionRadius = 1f;
     [SerializeField] private LayerMask oneWayPlatformLayer;
     [SerializeField] private Transform wallCheck;
     [SerializeField] private float wallCheckDistance;
@@ -178,7 +180,10 @@ public class Player : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
+        Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(trapDetection.position, trapDetectionRadius);
         Gizmos.color = Color.cyan;
         Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance,
             wallCheck.position.y, 
